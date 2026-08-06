@@ -1,0 +1,4 @@
+interface:
+  display_name: "Garment Product Image Guard"
+  short_description: "服装款式锁定、儿童合理场景与电商成图"
+  default_prompt: "Use $garment-product-image-guard to generate exact-SKU apparel ecommerce images with age-appropriate scene locks; prioritize amusement-park, school-campus, playground, park, or children's activity settings for childrenswear and reject cafes or adult social/business settings."

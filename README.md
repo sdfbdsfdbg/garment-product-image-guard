@@ -1,6 +1,21 @@
 # Garment Product Image Guard
 
-面向服装电商批量成图的 Codex Skill。它以原始 SKU 图片和 `SKU_PROFILE.json` 为事实来源，约束生成提示词、成图顺序、场景选择、文件命名与验收流程，尽量避免颜色、版型、领型、袖型、口袋、腰带、下摆、图案、Logo 和面料表现发生漂移。
+<p align="center"><strong>让 AI 生成的是同一件商品，而不是一件相似的衣服。</strong></p>
+
+<p align="center">
+  <img alt="Codex Skill" src="https://img.shields.io/badge/Codex-Skill-111827">
+  <img alt="Eight outputs per SKU" src="https://img.shields.io/badge/Outputs-8%20per%20SKU-2563EB">
+  <img alt="Exact SKU fidelity" src="https://img.shields.io/badge/SKU%20Fidelity-Identity%20Locked-059669">
+  <img alt="Resumable batches" src="https://img.shields.io/badge/Batch-Resumable-F59E0B">
+</p>
+
+**Garment Product Image Guard** 是为真实服装电商批量成图流程设计的 Codex Skill。它能从非专业拍摄的商品照片出发，组织白底图、模特图、四宫格、细节图和面料卡的生成，同时把原始 SKU 图片与 `SKU_PROFILE.json` 设为不可绕过的事实来源。
+
+项目通过身份锁、视图级证据、提示词锁、生成前检查和成图后验证，系统性降低颜色、版型、领型、袖型、口袋、腰带、下摆、图案、Logo 与面料表现的漂移。它还支持夜间无人值守、断点续作和失败项重做，让一次性的 AI 出图过程变成可追溯、可恢复、可维护的生产工作流。
+
+| 精确复刻 | 标准交付 | 批量运行 | 可审计验证 |
+| --- | --- | --- | --- |
+| 以同一 SKU 为验收标准 | 每款固定 8 张电商图片 | 支持队列、增量补图和断点恢复 | 每张图绑定来源证据和失败标记 |
 
 > `README.md` 面向安装者和维护者；真正提供给 Codex 执行的规则以 [`SKILL.md`](SKILL.md) 为准。若两者存在差异，应先修正 README，不能削弱 `SKILL.md` 中的身份锁和验证要求。
 
@@ -131,7 +146,7 @@ flowchart TD
 
 ### 从 GitHub 克隆
 
-该仓库是私有仓库，执行克隆前需要让 Git 或 GitHub CLI 登录有访问权限的 GitHub 账号。
+该仓库为公开仓库，可以直接克隆；如果网络环境需要代理，请先为 Git 配置可用的网络连接。
 
 Windows PowerShell：
 
@@ -321,10 +336,6 @@ garment-product-image-guard/
 
 重新要求 Codex 扫描同一输入输出目录并继续即可。它应保留已通过验证的文件，只补缺失或失败项。
 
-### 当前到底是 7 张还是 8 张？
-
-当前合同是 **8 张**。四宫格 `SKU_05_four_grid.jpg` 已计入固定输出集合，完成条件以完整 `required_outputs` 列表为准。
-
 ## 维护检查清单
 
 修改 skill 后至少执行以下检查：
@@ -347,5 +358,4 @@ python -X utf8 path\to\skill-creator\scripts\quick_validate.py path\to\garment-p
 
 - 仓库本身只保存通用 skill、规则文档和版式参考图，不应提交真实订单、SKU 批次、业务日志或客户数据。
 - 输入图片、输出图片、`SKU_PROFILE.json` 和 `batch_generation_log.md` 应保留在业务工作目录中。
-- 当前仓库未声明开源许可证，按私有内部项目管理；未经授权不要复制或公开分发。
-
+- 仓库已公开，但当前尚未声明开源许可证；公开可见不等于自动授予复制、修改或分发许可。

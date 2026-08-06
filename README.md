@@ -7,6 +7,7 @@
   <img alt="Eight outputs per SKU" src="https://img.shields.io/badge/Outputs-8%20per%20SKU-2563EB">
   <img alt="Exact SKU fidelity" src="https://img.shields.io/badge/SKU%20Fidelity-Identity%20Locked-059669">
   <img alt="Resumable batches" src="https://img.shields.io/badge/Batch-Resumable-F59E0B">
+  <img alt="PolyForm Noncommercial License" src="https://img.shields.io/badge/License-PolyForm%20Noncommercial%201.0.0-7C3AED">
 </p>
 
 **Garment Product Image Guard** 是为真实服装电商批量成图流程设计的 Codex Skill。它能从非专业拍摄的商品照片出发，组织白底图、模特图、四宫格、细节图和面料卡的生成，同时把原始 SKU 图片与 `SKU_PROFILE.json` 设为不可绕过的事实来源。
@@ -293,6 +294,7 @@ git clone https://github.com/sdfbdsfdbg/garment-product-image-guard.git "$env:CO
 garment-product-image-guard/
 ├── SKILL.md
 ├── README.md
+├── LICENSE.md
 ├── agents/
 │   └── openai.yaml
 ├── references/
@@ -308,6 +310,7 @@ garment-product-image-guard/
 ```
 
 - [`SKILL.md`](SKILL.md)：核心执行合同、身份锁、工作流和验收门槛。
+- [`LICENSE.md`](LICENSE.md)：PolyForm Noncommercial 1.0.0 许可证与版权声明。
 - [`references/four-grid.md`](references/four-grid.md)：四宫格分镜、姿势、搭配与文案规则。
 - [`references/fabric-layout.md`](references/fabric-layout.md)：面料卡的固定版式和内容约束。
 - [`references/scene-context.md`](references/scene-context.md)：按模特年龄选择合适场景的规则。
@@ -354,8 +357,19 @@ garment-product-image-guard/
 python -X utf8 path\to\skill-creator\scripts\quick_validate.py path\to\garment-product-image-guard
 ```
 
+## 许可证
+
+本项目采用 [PolyForm Noncommercial License 1.0.0](LICENSE.md)。
+
+- 允许个人学习、研究、实验和其他非商业使用。
+- 允许在非商业目的下修改并分享原版或修改版，但必须同时保留许可证和版权声明。
+- 未经版权所有者另行书面授权，不允许将本项目用于商业目的。
+- 版权所有：Copyright 2026 Enns（GitHub：[`sdfbdsfdbg`](https://github.com/sdfbdsfdbg)）。
+
+该许可证属于“源码公开、非商业许可”，不属于 OSI 定义下的开源许可证。如需商业授权，请通过 GitHub Issues 与版权所有者联系。
+
 ## 隐私与授权
 
 - 仓库本身只保存通用 skill、规则文档和版式参考图，不应提交真实订单、SKU 批次、业务日志或客户数据。
 - 输入图片、输出图片、`SKU_PROFILE.json` 和 `batch_generation_log.md` 应保留在业务工作目录中。
-- 仓库已公开，但当前尚未声明开源许可证；公开可见不等于自动授予复制、修改或分发许可。
+- 仓库已公开，使用、修改和分享均须遵守 [PolyForm Noncommercial License 1.0.0](LICENSE.md)。
